@@ -8,7 +8,7 @@
     <!-- Link para CSS Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Link para CSS personalizado/Próprio -->
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <title>Sistema Produtos</title>
 </head>
 
