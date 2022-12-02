@@ -27,6 +27,7 @@
         <?php include 'produtos_destaque.php'; ?>
 
         <!-- Área dos produtos em geral -->
+        <a name="produtos">&nbsp;</a>
         <?php include 'produtos_geral.php'; ?>
 
         <!-- Rodapé -->
