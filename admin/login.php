@@ -20,6 +20,13 @@ if($_POST){
         $_SESSION['login_usuario'] = $login;
         $_SESSION['nivel_usuario'] = $rowLogin['nivel_usuario'];
         $_SESSION['nome_da_sessao'] = session_name();
+        if($rowLogin['nivel_usuario']=='sup'){
+            echo "<script>window.open('index.php','_self')</script>";
+        }elseif ($rowLogin['nivel_usuario']=='com') {
+            echo "<script>window.open('../client/index.php','_self')</script>";
+        }
+    }else{
+        echo "<script>window.open('invasor.php','_self')</script>";
     }
 }
 ?>
