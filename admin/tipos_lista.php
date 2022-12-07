@@ -1,7 +1,7 @@
 <?php
 include "acesso_com.php";
 include "../conn/connect.php";
-$lista = $conn->query("select * from vw_tbprodutos"); // order by (tipo, destaque, etc.)
+$lista = $conn->query("select * from tbtipos"); // order by (tipo, destaque, etc.)
 $row = $lista->fetch_assoc();
 $nrows = $lista->num_rows;
 ?>
@@ -12,7 +12,7 @@ $nrows = $lista->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Produtos</title>
+    <title>Lista de Tipos</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
@@ -20,15 +20,12 @@ $nrows = $lista->num_rows;
 <body class="fundofixo">
     <?php include "menu_adm.php"; ?>
     <main class="container">
-        <h2 class="breadcrumb alert-danger">Lista de Produtos</h2>
+        <h2 class="breadcrumb alert-danger">Lista de Tipos</h2>
         <table class="table table-hover table-condensed tb-opacidade">
             <thead>
                 <th class="hidden">ID</th>
-                <th>TIPO</th>
-                <th>DESCRIÇÃO</th>
-                <th>RESUMO</th>
-                <th>VALOR</th>
-                <th>IMAGEM</th>
+                <th>SIGLA</th>
+                <th>ROTULO</th>
                 <th>
                     <a href="produtos_insere.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
                         <span class="hidden-xs">ADICIONAR &nbsp;</span>
@@ -41,38 +38,21 @@ $nrows = $lista->num_rows;
                 <?php do { ?>
                     <!-- Início da estrutura de repetição -->
                     <tr>
-                        <td class="hidden"><?php echo $row['id_produto']; ?></td>
+                        <td class="hidden"><?php echo $row['id_tipo']; ?></td>
                         <td>
-                            <span class="visible-xs"><?php echo $row['sigla_tipo'] ?></span>
+                            <span class="hidden-xs"><?php echo $row['sigla_tipo'] ?></span>
+                        </td>
+                        <td>
                             <span class="hidden-xs"><?php echo $row['rotulo_tipo'] ?></span>
                         </td>
                         <td>
-                            <?php
-                            if ($row['destaque_produto'] == 'Sim') {
-                                echo '<span class="glyphicon glyphicon-heart text-danger" aria-hidden="true"></span>';
-                            } else {
-                                echo '<span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>';
-                            }
-                            ?>
-                            <?php echo $row['descri_produto'] ?>
-                        </td>
-                        <td>
-                            <?php echo $row['resumo_produto'] ?>
-                        </td>
-                        <td>
-                            <?php echo number_format($row['valor_produto'], 2, ',', '.') ?>
-                        </td>
-                        <td>
-                            <img src="../images/<?php echo $row['imagem_produto']?>" alt="<?php echo $row['descri_produto'] ?>" width="100px">
-                        </td>
-                        <td>
-                            <a href="produtos_atualiza.php?id_produto=<?php echo $row['id_produto']?>" role="button" class="btn btn-warning btn-block btn-xs">
+                            <a href="lista_atualiza.php?id_tipo=<?php echo $row['id_tipo']?>" role="button" class="btn btn-warning btn-block btn-xs">
                                 <span class="hidden-xs">ALTERAR</span>
                                 <span class="glyphicon glyphicon-refresh"></span>
                             </a>
                             <button
-                            data-nome="<?php echo $row['descri_produto']?>"
-                            data-id="<?php echo $row['id_produto']?>"
+                            data-nome="<?php echo $row['rotulo_tipo']?>"
+                            data-id="<?php echo $row['id_tipo']?>"
                             class="delete btn btn-xs btn-block btn-danger"
                             >
                                 <span class="hidden-xs">EXCLUIR</span>
@@ -118,7 +98,7 @@ $nrows = $lista->num_rows;
         var id = $(this).data('id'); // Busca o id do (data-id)
         //console.log(id + ' - ' + nome); //Exibe no console
         $('span.nome').text(nome); // Insere o nome do item na confirmação
-        $('a.delete-yes').attr('href','produtos_excluir.php?id_produto='+id); // Chama o arquivo php para excluir o produto
+        $('a.delete-yes').attr('href','tipos_excluir.php?id_tipo='+id); // Chama o arquivo php para excluir o produto
         $('#modalEdit').modal('show')// Chamar o modal 
     });
 </script>

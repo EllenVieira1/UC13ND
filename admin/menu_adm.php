@@ -35,7 +35,7 @@
             <li>
                 <button type="button" class="btn btn-danger navbar-btn disabled">
                     Olá, <?php echo($_SESSION['login_usuario']); ?>!
-                </button>
+                </button>&nbsp;
             </li>
             <li class="active"><a href="index.php">ADMIN</a></li>
             <li><a href="produtos_lista.php">PRODUTOS</a></li>
