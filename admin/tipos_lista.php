@@ -27,7 +27,7 @@ $nrows = $lista->num_rows;
                 <th>SIGLA</th>
                 <th>ROTULO</th>
                 <th>
-                    <a href="produtos_insere.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
+                    <a href="tipos_insere.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
                         <span class="hidden-xs">ADICIONAR &nbsp;</span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
@@ -46,7 +46,7 @@ $nrows = $lista->num_rows;
                             <span class="hidden-xs"><?php echo $row['rotulo_tipo'] ?></span>
                         </td>
                         <td>
-                            <a href="lista_atualiza.php?id_tipo=<?php echo $row['id_tipo']?>" role="button" class="btn btn-warning btn-block btn-xs">
+                            <a href="tipos_atualiza.php?id_tipo=<?php echo $row['id_tipo']?>" role="button" class="btn btn-warning btn-block btn-xs">
                                 <span class="hidden-xs">ALTERAR</span>
                                 <span class="glyphicon glyphicon-refresh"></span>
                             </a>
