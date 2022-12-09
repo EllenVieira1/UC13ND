@@ -13,7 +13,8 @@ $num_linhas = $lista->num_rows;
     <title>Produtos</title>
 </head>
 <body>
-    <h2 class="breadcrumb alert-danger"><strong>Destaques</strong></h2>
+    <?php if($num_linhas>0){ ?>
+        <h2 class="breadcrumb alert-danger"><strong>Destaques</strong></h2>
     <div class="row">
     <?php do {?> <!-- Início da estrutura de repetição -->
         <div class="col-sm-6 col-md-4">
@@ -48,5 +49,7 @@ $num_linhas = $lista->num_rows;
         </div>
     <?php } while($row_destaque = $lista->fetch_assoc());?> <!-- Final da estrutura de repetição -->
     </div>
+    <?php }?>
+    
 </body>
 </html>
