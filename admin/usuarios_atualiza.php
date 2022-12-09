@@ -5,7 +5,6 @@ include("acesso_com.php");
 // Incluir o arquivo e fazer a conexão
 include("../conn/connect.php");
 
-
 if($_POST){
 
     // Receber os dados do formulário
@@ -31,9 +30,9 @@ if($_POST){
 };
 
 // Consulta para trazer e filtrar os dados
-if ($_POST){$id_form  =   $_POST['id_usuario'];}
+if ($_POST){$id_form  =   $_GET['id_usuario'];}
 else{$id_form = 0;}
-$lista          =   $conn->query("SELECT * FROM tbusuarios WHERE id_usuario = $id_form");
+$lista          =   $conn->query("SELECT * FROM tbusuarios WHERE id_usuario");
 $row            =   $lista->fetch_assoc();
 $totalRows      =   ($lista)->num_rows;
 
